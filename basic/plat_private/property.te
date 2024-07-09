@@ -64,3 +64,4 @@ typeattribute system_mtk_vendor_bluetooth_prop      extended_core_property_type;
 typeattribute system_mtk_rcs_single_reg_support_prop extended_core_property_type;
 typeattribute system_mtk_sf_debug_prop              extended_core_property_type;
 typeattribute system_mtk_pco_prop extended_core_property_type;
+typeattribute system_mtk_persist_pllnk_prop extended_core_property_type;

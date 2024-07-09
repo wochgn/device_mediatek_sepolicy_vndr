@@ -24,7 +24,7 @@ allow mtk_hal_power sysfs_mtk_core_ctl:file rw_file_perms;
 allow mtk_hal_power proc_thermal:file rw_file_perms;
 
 # proc info
-allow mtk_hal_power mtk_hal_audio:dir r_dir_perms;
+allow mtk_hal_power hal_audio_default:dir r_dir_perms;
 
 # Date : 2017/10/02
 # Operation: SQC
@@ -318,6 +318,3 @@ allow mtk_hal_power sysfs_dvfsrc_dbg:file rw_file_perms;
 # allow powerhal to access /proc/mgq
 allow mtk_hal_power proc_mgq:dir r_dir_perms;
 allow mtk_hal_power proc_mgq:file w_file_perms;
-
-# Allow to access thermal node
-allow mtk_hal_power sysfs_therm:file { write open };

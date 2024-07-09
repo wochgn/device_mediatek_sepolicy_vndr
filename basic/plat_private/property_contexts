@@ -87,4 +87,3 @@ vendor.mtk.boot0_linkc           u:object_r:system_mtk_persist_pllnk_prop:s0
 vendor.mtk.boot1_linka           u:object_r:system_mtk_persist_pllnk_prop:s0
 vendor.mtk.boot1_linkb           u:object_r:system_mtk_persist_pllnk_prop:s0
 vendor.mtk.boot1_linkc           u:object_r:system_mtk_persist_pllnk_prop:s0
-

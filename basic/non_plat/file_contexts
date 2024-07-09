@@ -533,7 +533,6 @@
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/frp                              u:object_r:frp_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/expdb                            u:object_r:expdb_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/misc2                            u:object_r:misc2_block_device:s0
-/dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/logo                             u:object_r:logo_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/para                             u:object_r:para_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/misc                             u:object_r:misc_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/seccfg                           u:object_r:seccfg_block_device:s0
@@ -560,6 +559,7 @@
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/oem(_[ab])?                      u:object_r:oem_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/vendor(_[ab])?                   u:object_r:vendor_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/lk(_[ab])?                       u:object_r:lk_block_device:s0
+/dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/logo(_[ab])?                     u:object_r:logo_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/odmdtbo(_[ab])?                  u:object_r:dtbo_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/dtbo(_[ab])?                     u:object_r:dtbo_block_device:s0
 /dev/block/platform/mtk-\b(msdc|ufs)\b\.0/[0-9]+\.\b(msdc0|ufs0)\b/by-name/tee([12]|_[ab])                  u:object_r:tee_block_device:s0
@@ -584,7 +584,6 @@
 /dev/block/by-name/frp                              u:object_r:frp_block_device:s0
 /dev/block/by-name/expdb                            u:object_r:expdb_block_device:s0
 /dev/block/by-name/misc2                            u:object_r:misc2_block_device:s0
-/dev/block/by-name/logo                             u:object_r:logo_block_device:s0
 /dev/block/by-name/para                             u:object_r:para_block_device:s0
 /dev/block/by-name/misc                             u:object_r:misc_block_device:s0
 /dev/block/by-name/seccfg                           u:object_r:seccfg_block_device:s0
@@ -609,6 +608,7 @@
 /dev/block/by-name/oem(_[ab])?                      u:object_r:oem_block_device:s0
 /dev/block/by-name/vendor(_[ab])?                   u:object_r:vendor_block_device:s0
 /dev/block/by-name/lk(_[ab])?                       u:object_r:lk_block_device:s0
+/dev/block/by-name/logo(_[ab])?                     u:object_r:logo_block_device:s0
 /dev/block/by-name/odmdtbo(_[ab])?                  u:object_r:dtbo_block_device:s0
 /dev/block/by-name/dtbo(_[ab])?                     u:object_r:dtbo_block_device:s0
 /dev/block/by-name/tee([12]|_[ab])                  u:object_r:tee_block_device:s0
@@ -692,11 +692,13 @@
 
 /(vendor|system/vendor)/bin/xcap     u:object_r:xcap_exec:s0
 
+/(vendor|system/vendor)/bin/rebalance_interrupts-vendor.mediatek u:object_r:rebalance_interrupts_vendor_exec:s0
+
 /(vendor|system/vendor)/bin/biosensord_nvram                                                u:object_r:biosensord_nvram_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.audio\.service\.mediatek                  u:object_r:hal_audio_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.bluetooth@1\.[0-9]-service-mediatek       u:object_r:mtk_hal_bluetooth_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gnss@2\.1-service-mediatek                u:object_r:mtk_hal_gnss_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gnss-service\.mediatek                    u:object_r:mtk_hal_gnss_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.audio\.service\.mediatek                  u:object_r:mtk_hal_audio_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mtkpower@1\.0-service            u:object_r:mtk_hal_power_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@1\.0-service-mediatek             u:object_r:mtk_hal_sensors_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@2\.0-service-mediatek             u:object_r:mtk_hal_sensors_exec:s0
@@ -739,6 +741,9 @@
 /vendor/bin/thermal_symlinks_mediatek u:object_r:init-thermal-symlinks-sh_exec:s0
 /dev/thermal(/.*)?                    u:object_r:thermal_link_device:s0
 
+# Microtrust SE
+/(vendor|system/vendor)/bin/hw/vendor\.microtrust\.hardware\.se@1\.0-service   u:object_r:hal_secure_element_default_exec:s0
+
 # PQ hal
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.pq@2\.2-service u:object_r:mtk_hal_pq_exec:s0
 
@@ -751,6 +756,7 @@
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.keymaster_attestation@1\.1-service u:object_r:hal_keymaster_attestation_exec:s0
 
 # ST NFC 1.2 hidl service
+/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc-service.st                 u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.2-service-st                 u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.2-service-st54spi u:object_r:st54spi_hal_secure_element_exec:s0
 
@@ -761,7 +767,9 @@
 # MTK USB hal
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.[0-9]+-service-mediatek   u:object_r:mtk_hal_usb_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb-service.mediatek             u:object_r:mtk_hal_usb_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb-service.mediatek-legacy      u:object_r:mtk_hal_usb_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.[0-9]+-service-mediatekv2 u:object_r:mtk_hal_usb_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb\.gadget-service\.mediatek    u:object_r:mtk_hal_usb_exec:s0
 
 # MTK OMAPI for UICC
 /(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.[0-9]+-service-mediatek u:object_r:mtk_hal_secure_element_exec:s0
@@ -909,13 +917,6 @@
 /vendor/lib(64)?/libcmdl_ndk.mtk.vndk\.so       u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libarmnn_ndk.mtk.vndk\.so      u:object_r:same_process_hal_file:s0
 
-/vendor/lib(64)?/libarmnn\.so                             u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libcmdl\.so                              u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6895/libarmnn\.so                      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6895/libcmdl\.so                       u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6983/libarmnn\.so                      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6983/libcmdl\.so                       u:object_r:same_process_hal_file:s0
-
 # Date: 2018/07/06
 # Purpose for same-process HAL files and their dependencies: libGLES_mali.so need libm4u.so on mali GPU.
 /vendor/lib(64)?/libm4u\.so u:object_r:same_process_hal_file:s0
@@ -941,32 +942,6 @@
 # Purpose: RayTracing related libraries
 /vendor/lib(64)?/libVkLayer_mtk_rt_sdk.so u:object_r:same_process_hal_file:s0
 
-# APU related libraries
-/vendor/lib(64)?/libapu-apuwareapusys\.mtk\.so            u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libapu-apuwareutils\.mtk\.so             u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libapu-apuwarexrp\.mtk\.so               u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libapu-frontend\.so                      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libapu_mdw_batch.so                      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libapu_mdw\.so                           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libapu-platform\.so                      u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libapusys.so                             u:object_r:same_process_hal_file:s0
-
-/vendor/lib(64)?/vendor.mediatek.hardware.apuware.apusys@1.0\.so  u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.mediatek.hardware.apuware.utils@1.0\.so   u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.mediatek.hardware.apuware.xrp@1.0\.so     u:object_r:same_process_hal_file:s0
-
-# Neuron related libraries in MTK 8100 / 9000
-/vendor/lib(64)?/libneuron_adapter\.so                    u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libneuron_runtime.5\.so                  u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libneuron_runtime\.so                    u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6895/libneuron_adapter_mgvi\.so        u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6895/libneuron_runtime.5\.so           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6895/libneuron_runtime\.so             u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6895/libnir_neon_driver\.so            u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6983/libneuron_adapter_mgvi\.so        u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6983/libneuron_runtime.5\.so           u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/mt6983/libnir_neon_driver\.so            u:object_r:same_process_hal_file:s0
-
 ##########################
 # Others
 #
@@ -987,10 +962,6 @@
 /factory_init\..* u:object_r:rootfs:s0
 /meta_init\..*    u:object_r:rootfs:s0
 /multi_init\..*   u:object_r:rootfs:s0
-/dev/block/by-name/preloader_raw_a                                                                          u:object_r:postinstall_block_device:s0
-/dev/block/by-name/preloader_raw_b                                                                          u:object_r:postinstall_block_device:s0
-/dev/block/platform/bootdevice/by-name/preloader_raw_a                                                      u:object_r:postinstall_block_device:s0
-/dev/block/platform/bootdevice/by-name/preloader_raw_b                                                      u:object_r:postinstall_block_device:s0
 
 /postinstall/bin/mtk_plpath_utils_ota                                                                       u:object_r:postinstall_file:s0
 # Custom files
@@ -1024,6 +995,12 @@
 # Purpose: Add permission for vilte
 /dev/ccci_vts u:object_r:ccci_vts_device:s0
 
+# ConsumerIr
+/(vendor|system/vendor)/bin/hw/android\.hardware\.ir-service\.mediatek                    u:object_r:hal_ir_default_exec:s0
+
 # Power
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.mediatek-libperfmgr      u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mtkpower@1\.2-service\.stub    u:object_r:mtk_hal_power_exec:s0
+
+# Memtrack
+/(vendor|system/vendor)/bin/hw/android\.hardware\.memtrack-service\.mediatek-mali         u:object_r:hal_memtrack_default_exec:s0

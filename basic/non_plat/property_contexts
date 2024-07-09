@@ -44,18 +44,15 @@ vendor.gpsdbglog.enable u:object_r:vendor_mtk_mnld_prop:s0
 vendor.gpsdbglog.       u:object_r:vendor_mtk_mnld_prop:s0
 vendor.debug.gps.       u:object_r:vendor_mtk_mnld_prop:s0
 
+ro.vendor.audio.         u:object_r:vendor_mtk_audio_prop:s0
+vendor.audio.            u:object_r:vendor_mtk_audio_prop:s0
+persist.vendor.audio.    u:object_r:vendor_mtk_audio_prop:s0
 vendor.streamout.        u:object_r:vendor_mtk_audiohal_prop:s0
 vendor.streamin.         u:object_r:vendor_mtk_audiohal_prop:s0
 vendor.a2dp.             u:object_r:vendor_mtk_audiohal_prop:s0
 vendor.audiohal.         u:object_r:vendor_mtk_audiohal_prop:s0
 persist.vendor.audiohal. u:object_r:vendor_mtk_audiohal_prop:s0
 persist.vendor.vow.      u:object_r:vendor_mtk_audiohal_prop:s0
-
-vendor.audio.chk.        u:object_r:vendor_mtk_audio_prop:s0
-persist.vendor.audio.    u:object_r:vendor_mtk_audio_prop:s0
-vendor.audio.            u:object_r:vendor_mtk_audio_prop:s0
-ro.vendor.audio.         u:object_r:vendor_mtk_ro_audio_prop:s0
-
 vendor.audio.voice       u:object_r:vendor_mtk_audio_voice_prop:s0
 
 persist.vendor.connsys.coredump.mode u:object_r:vendor_mtk_coredump_prop:s0
@@ -75,6 +72,7 @@ vendor.sms.md.ready	    u:object_r:vendor_mtk_md_prop:s0
 vendor.debug.factory.idle_state u:object_r:vendor_mtk_factory_idle_state_prop:s0
 
 vendor.service.nvram_init u:object_r:vendor_mtk_service_nvram_init_prop:s0
+vendor.service.nvram_restore u:object_r:vendor_mtk_service_nvram_restore_prop:s0
 
 # Camera APP Mode
 vendor.client. u:object_r:vendor_mtk_em_prop:s0
@@ -285,7 +283,6 @@ ro.vendor.mtk.bt_sap_enable u:object_r:vendor_mtk_bt_sap_enable_prop:s0
 
 # powerhal config
 persist.vendor.powerhal. u:object_r:vendor_power_prop:s0
-vendor.powerhal.         u:object_r:vendor_power_prop:s0
 vendor.powerhal.gpu.     u:object_r:vendor_mtk_powerhal_gpu_prop:s0
 
 # MTK Wifi wlan_assistant property
@@ -406,18 +403,6 @@ persist.vendor.eara_io.          u:object_r:vendor_mtk_eara_io_prop:s0
 # xfrm and mdrsra property for non 5G GKI platform
 persist.vendor.mdrsra_v2_support u:object_r:vendor_mtk_mdrsra_v2_support_prop:s0
 persist.vendor.xfrm_support u:object_r:vendor_mtk_xfrm_support_prop:s0
-
-mtk.vendor.omx.core.log         u:object_r:vendor_mtk_omx_core_prop:s0
-ro.mtk_crossmount_support       u:object_r:vendor_mtk_crossmount_prop:s0
-ro.mtk_deinterlace_support      u:object_r:vendor_mtk_deinterlace_prop:s0
-
-# IMEI
-persist.vendor.radio.imei      u:object_r:vendor_deviceid_prop:s0
-ro.vendor.oem.imei             u:object_r:vendor_deviceid_prop:s0
-persist.vendor.radio.meid      u:object_r:vendor_deviceid_prop:s0
-ro.vendor.oem.meid             u:object_r:vendor_deviceid_prop:s0
-ro.vendor.oem.sno              u:object_r:vendor_sno_prop:s0
-ro.vendor.oem.psno             u:object_r:vendor_sno_prop:s0
 
 # Thermal
 vendor.thermal. u:object_r:vendor_thermal_prop:s0

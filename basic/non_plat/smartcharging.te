@@ -22,7 +22,7 @@ allow smartcharging input_device:file r_file_perms;
 # Data : WK14.43
 # Operation : Migration
 # Purpose : For smartcharging log can be printed with kernel log
-allow smartcharging kmsg_device:chr_file rw_file_perms;
+allow smartcharging kmsg_device:chr_file w_file_perms;
 
 # Data : WK14.43
 # Operation : Migration
